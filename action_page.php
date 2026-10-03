@@ -3,22 +3,23 @@
 $username = $_GET["username"] ?? "";
 $show = $_GET["show"] ?? "";
 
-echo "<h1>GitHub user: " . htmlspecialchars($username) . "</h1>";
+$base = "https://api.github.com/users/" . urlencode($username);
 
 if ($show == "followers") {
-    echo "<h2>Followers</h2>";
+    $url = $base . "/followers";
 }
 
 if ($show == "repos") {
-    echo "<h2>Repos</h2>";
+    $url = $base . "/repos";
 }
 
 if ($show == "events") {
-    echo "<h2>Events</h2>";
+    $url = $base . "/events/public";
 }
 
 if ($show == "gists") {
-    echo "<h2>Gists</h2>";
+    $url = $base . "/gists";
 }
 
+echo $url;
 ?>
